@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CryptoGuard</title>
+<title>SHIELD CryptoGuard</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -26,284 +26,165 @@
     justify-content: space-between;
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .logo-text {
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #00ff88;
-  }
-
-  .logo-sub {
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: rgba(0,255,136,0.4);
-    margin-top: 1px;
-    text-transform: uppercase;
-  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon { width: 32px; height: 32px; }
+  .logo-text { font-size: 16px; font-weight: 800; letter-spacing: 1px; color: #00ff88; }
+  .logo-sub { font-size: 9px; letter-spacing: 2px; color: rgba(0,255,136,0.4); margin-top: 1px; text-transform: uppercase; }
 
   .status-badge {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #00ff88;
+    display: flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #00ff88;
   }
-
   .status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #00ff88;
+    width: 7px; height: 7px; border-radius: 50%; background: #00ff88;
     animation: pulse 2s infinite;
   }
-
   @keyframes pulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.5); }
-    50%       { box-shadow: 0 0 0 5px rgba(0,255,136,0); }
+    50% { box-shadow: 0 0 0 5px rgba(0,255,136,0); }
   }
 
-  /* ── Current Site Analysis ── */
-  .site-card {
-    margin: 14px;
-    border-radius: 10px;
-    border: 1px solid rgba(0,255,136,0.15);
-    overflow: hidden;
+  /* ── Plan Badge ── */
+  .plan-bar {
+    padding: 8px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-
-  .site-card-header {
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(0,255,136,0.03);
-  }
-
-  .site-url {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    font-family: monospace;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
-  }
-
-  .risk-badge {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    padding: 3px 10px;
+  .plan-badge {
+    font-size: 10px; font-weight: 800; letter-spacing: 2px; padding: 3px 10px;
     border-radius: 4px;
   }
+  .plan-free { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
+  .plan-pro { background: rgba(0,255,136,0.15); color: #00ff88; }
+  .plan-email { font-size: 10px; color: rgba(255,255,255,0.3); }
 
-  .risk-safe     { background: rgba(0,255,136,0.15); color: #00ff88; }
-  .risk-medium   { background: rgba(255,215,0,0.15);  color: #ffd700; }
-  .risk-high     { background: rgba(255,107,53,0.15); color: #ff6b35; }
+  /* ── Login Section ── */
+  .login-section {
+    margin: 14px;
+    padding: 16px;
+    background: rgba(0,255,136,0.03);
+    border: 1px solid rgba(0,255,136,0.1);
+    border-radius: 10px;
+  }
+  .login-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .login-desc { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; line-height: 1.4; }
+  .login-row { display: flex; gap: 8px; }
+  .login-input {
+    flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 9px 12px; color: #fff; font-size: 12px; outline: none;
+  }
+  .login-input:focus { border-color: rgba(0,255,136,0.4); }
+  .login-input::placeholder { color: rgba(255,255,255,0.2); }
+  .login-btn {
+    background: #00ff88; color: #000; border: none; border-radius: 6px;
+    padding: 9px 16px; font-size: 11px; font-weight: 800; cursor: pointer;
+    letter-spacing: 1px; white-space: nowrap;
+  }
+  .login-btn:hover { background: #00ffaa; }
+  .login-error { font-size: 11px; color: #ff3366; margin-top: 8px; display: none; }
+
+  /* ── Current Site ── */
+  .site-card {
+    margin: 14px; border-radius: 10px;
+    border: 1px solid rgba(0,255,136,0.15); overflow: hidden;
+  }
+  .site-card-header {
+    padding: 12px 16px; display: flex; align-items: center;
+    justify-content: space-between; background: rgba(0,255,136,0.03);
+  }
+  .site-url {
+    font-size: 11px; color: rgba(255,255,255,0.5); font-family: monospace;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+  }
+  .risk-badge { font-size: 10px; font-weight: 800; letter-spacing: 2px; padding: 3px 10px; border-radius: 4px; }
+  .risk-safe { background: rgba(0,255,136,0.15); color: #00ff88; }
+  .risk-medium { background: rgba(255,215,0,0.15); color: #ffd700; }
+  .risk-high { background: rgba(255,107,53,0.15); color: #ff6b35; }
   .risk-critical { background: rgba(255,51,102,0.15); color: #ff3366; }
-
-  .site-card-body {
-    padding: 14px 16px;
-  }
-
-  .safe-message {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
+  .site-card-body { padding: 14px 16px; }
+  .safe-message { display: flex; align-items: center; gap: 10px; }
   .safe-icon { font-size: 24px; }
-
   .safe-text { font-size: 13px; color: #00ff88; font-weight: 600; }
-  .safe-sub  { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+  .safe-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
 
   .threat-item {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px; padding: 10px 12px; margin-bottom: 8px;
   }
-
   .threat-item:last-child { margin-bottom: 0; }
-
-  .threat-top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-
-  .threat-sev {
-    font-size: 9px;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 3px;
-    letter-spacing: 1px;
-  }
-
+  .threat-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .threat-sev { font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 3px; letter-spacing: 1px; }
   .sev-critical { background: #ff3366; color: #fff; }
-  .sev-high     { background: #ff6b35; color: #fff; }
-  .sev-medium   { background: #ffd700; color: #000; }
-
-  .threat-msg  { font-size: 12px; font-weight: 600; color: #fff; }
+  .sev-high { background: #ff6b35; color: #fff; }
+  .sev-medium { background: #ffd700; color: #000; }
+  .sev-info { background: rgba(0,170,255,0.2); color: #00aaff; }
+  .threat-msg { font-size: 12px; font-weight: 600; color: #fff; }
   .threat-detail { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.4; }
 
   /* ── Stats ── */
-  .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 0 14px 14px;
-  }
-
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 14px 14px; }
   .stat-card {
-    background: rgba(0,255,136,0.03);
-    border: 1px solid rgba(0,255,136,0.1);
-    border-radius: 8px;
-    padding: 12px 14px;
-    text-align: center;
+    background: rgba(0,255,136,0.03); border: 1px solid rgba(0,255,136,0.1);
+    border-radius: 8px; padding: 12px 14px; text-align: center;
   }
-
-  .stat-num {
-    font-size: 22px;
-    font-weight: 900;
-    color: #00ff88;
-    display: block;
-  }
-
+  .stat-num { font-size: 22px; font-weight: 900; color: #00ff88; display: block; }
   .stat-label {
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
-    margin-top: 2px;
-    display: block;
+    font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; margin-top: 2px; display: block;
   }
 
   /* ── Manual Check ── */
-  .check-section {
-    margin: 0 14px 14px;
-  }
-
+  .check-section { margin: 0 14px 14px; }
   .section-title {
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; margin-bottom: 10px;
   }
-
-  .input-row {
-    display: flex;
-    gap: 8px;
-  }
-
+  .input-row { display: flex; gap: 8px; }
   .check-input {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 6px;
-    padding: 9px 12px;
-    color: #fff;
-    font-size: 11px;
-    font-family: monospace;
-    outline: none;
-    transition: border-color 0.2s;
+    flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; padding: 9px 12px; color: #fff; font-size: 11px;
+    font-family: monospace; outline: none;
   }
-
   .check-input:focus { border-color: rgba(0,255,136,0.4); }
   .check-input::placeholder { color: rgba(255,255,255,0.2); }
-
   .check-btn {
-    background: #00ff88;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    padding: 9px 14px;
-    font-size: 11px;
-    font-weight: 800;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.2s;
-    white-space: nowrap;
+    background: #00ff88; color: #000; border: none; border-radius: 6px;
+    padding: 9px 14px; font-size: 11px; font-weight: 800; cursor: pointer;
+    letter-spacing: 1px; white-space: nowrap;
   }
-
-  .check-btn:hover { background: #00ffaa; transform: scale(1.02); }
-
-  .check-result {
-    margin-top: 10px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-    display: none;
-  }
-
+  .check-btn:hover { background: #00ffaa; }
+  .check-result { margin-top: 10px; padding: 10px 12px; border-radius: 6px; font-size: 11px; display: none; }
   .check-result.visible { display: block; }
-  .check-result.safe    { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.2); color: #00ff88; }
-  .check-result.danger  { background: rgba(255,51,102,0.1); border: 1px solid rgba(255,51,102,0.2); color: #ff3366; }
+  .check-result.safe { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.2); color: #00ff88; }
+  .check-result.danger { background: rgba(255,51,102,0.1); border: 1px solid rgba(255,51,102,0.2); color: #ff3366; }
+  .check-result.info { background: rgba(0,170,255,0.1); border: 1px solid rgba(0,170,255,0.2); color: #00aaff; }
 
   /* ── Footer ── */
   .footer {
     border-top: 1px solid rgba(255,255,255,0.05);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;
   }
-
-  .footer-text {
-    font-size: 9px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 1px;
-  }
-
+  .footer-text { font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
   .upgrade-btn {
-    background: linear-gradient(135deg, #00ff88, #00aaff);
-    color: #000;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 12px;
-    font-size: 10px;
-    font-weight: 800;
-    cursor: pointer;
+    background: linear-gradient(135deg, #00ff88, #00ccff); color: #000; border: none;
+    border-radius: 4px; padding: 6px 14px; font-size: 10px; font-weight: 800;
+    cursor: pointer; letter-spacing: 1px;
+  }
+  .upgrade-btn:hover { opacity: 0.9; transform: scale(1.02); }
+  .manage-btn {
+    background: none; border: 1px solid rgba(0,255,136,0.2); color: #00ff88;
+    border-radius: 4px; padding: 5px 12px; font-size: 10px; cursor: pointer;
     letter-spacing: 1px;
-    display: none;
   }
 
-  .upgrade-btn.visible { display: block; }
-
-  /* ── Loading ── */
-  .loading {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    color: rgba(255,255,255,0.3);
-    font-size: 11px;
-  }
-
+  .loading { display: flex; align-items: center; gap: 8px; padding: 12px 16px; color: rgba(255,255,255,0.3); font-size: 11px; }
   .spinner {
-    width: 14px; height: 14px;
-    border: 2px solid rgba(0,255,136,0.2);
-    border-top-color: #00ff88;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+    width: 14px; height: 14px; border: 2px solid rgba(0,255,136,0.2);
+    border-top-color: #00ff88; border-radius: 50%; animation: spin 0.8s linear infinite;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
@@ -324,20 +205,37 @@
   </div>
   <div class="status-badge">
     <div class="status-dot"></div>
-    ATIVO
+    ACTIVE
   </div>
+</div>
+
+<!-- Plan Bar -->
+<div class="plan-bar" id="planBar">
+  <span class="plan-badge plan-free" id="planBadge">FREE</span>
+  <span class="plan-email" id="planEmail"></span>
+</div>
+
+<!-- Login Section (shown when not logged in) -->
+<div class="login-section" id="loginSection">
+  <div class="login-title">🔓 Login to unlock PRO features</div>
+  <div class="login-desc">Enter the email you used (or will use) to subscribe to SHIELD PRO.</div>
+  <div class="login-row">
+    <input class="login-input" id="loginEmail" placeholder="your@email.com" type="email" />
+    <button class="login-btn" id="loginBtn">LOGIN</button>
+  </div>
+  <div class="login-error" id="loginError"></div>
 </div>
 
 <!-- Current Site -->
 <div class="site-card">
   <div class="site-card-header">
-    <span class="site-url" id="currentUrl">Analisando...</span>
+    <span class="site-url" id="currentUrl">Analyzing...</span>
     <span class="risk-badge risk-safe" id="riskBadge">SAFE</span>
   </div>
   <div class="site-card-body" id="siteAnalysis">
     <div class="loading">
       <div class="spinner"></div>
-      Analisando site atual...
+      Analyzing current site...
     </div>
   </div>
 </div>
@@ -346,24 +244,19 @@
 <div class="stats">
   <div class="stat-card">
     <span class="stat-num" id="scanCount">0</span>
-    <span class="stat-label">Sites Verificados</span>
+    <span class="stat-label">Sites Scanned</span>
   </div>
   <div class="stat-card">
     <span class="stat-num" id="blockedCount">0</span>
-    <span class="stat-label">Ameaças Bloqueadas</span>
+    <span class="stat-label">Threats Blocked</span>
   </div>
 </div>
 
-<!-- Manual Contract Check -->
+<!-- Contract Check -->
 <div class="check-section">
-  <div class="section-title">// Verificar Contrato</div>
+  <div class="section-title">// Check Contract</div>
   <div class="input-row">
-    <input
-      class="check-input"
-      id="contractInput"
-      placeholder="0x... endereço do contrato"
-      type="text"
-    />
+    <input class="check-input" id="contractInput" placeholder="0x... contract address" type="text" />
     <button class="check-btn" id="checkBtn">SCAN</button>
   </div>
   <div class="check-result" id="checkResult"></div>
@@ -371,8 +264,9 @@
 
 <!-- Footer -->
 <div class="footer">
-  <span class="footer-text">v1.0.0 — PROTEÇÃO ATIVA</span>
-  <button class="upgrade-btn" id="upgradeBtn">⚡ PRO</button>
+  <span class="footer-text" id="footerText">v1.0.1 — PROTECTION ACTIVE</span>
+  <button class="upgrade-btn" id="upgradeBtn">⚡ UPGRADE PRO</button>
+  <button class="manage-btn hidden" id="manageBtn">⚙ MANAGE</button>
 </div>
 
 <script src="popup.js"></script>
