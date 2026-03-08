@@ -3,7 +3,7 @@
   "name": "SHIELD CryptoGuard — Web3 Antivirus",
   "short_name": "SHIELD CryptoGuard",
   "description": "AI-powered Web3 security. Blocks phishing, detects honeypots, intercepts malicious approvals before your wallet signs anything.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "icons": {
     "16":  "icons/icon16.png",
     "32":  "icons/icon32.png",
