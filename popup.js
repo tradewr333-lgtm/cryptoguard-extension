@@ -3,7 +3,7 @@
 // Login, PRO verification, and UI logic
 // ============================================================
 
-const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/8x25kEcqicQg3bmdBY7N601';
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRm14n35U2OO7DtcCcdjO00';
 
 const RISK_CLASSES = {
   SAFE: 'risk-safe',
